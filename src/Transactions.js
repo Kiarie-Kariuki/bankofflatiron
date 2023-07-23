@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 const Transactions = () => {
   const [transactions, setTransactions] = useState([]);
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTransaction, setSearchTransaction] = useState('');
 
   useEffect(() => {
     fetch('http://localhost:3000/transactions')
@@ -12,20 +12,37 @@ const Transactions = () => {
   }, []);
 
   const handleSearch = event => {
-    setSearchTerm(event.target.value);
+    setSearchTransaction(event.target.value);
   };
 
+  const handleDelete = e => {
+    const transactionIdToDelete = e.target; 
+
+fetch(`http://localhost:3000/transactions/${transactionIdToDelete}`, {
+  method: "DELETE",
+})
+  .then(response => {
+    if (response.ok) {
+      console.log("Transaction deleted successfully.");
+    } else {
+      console.error("Failed to delete transaction.");
+    }
+  })
+  .catch(error => console.error("Error deleting transaction:", error));
+
+  }
+
   const filteredTransactions = transactions.filter(transaction =>
-    transaction.description.toLowerCase().includes(searchTerm.toLowerCase())
+    transaction.description.includes(searchTransaction)
   );
 
   return (
     <div className="transactions">
-      <h1>Recent Transactions</h1>
+      <h1>All Transactions</h1>
       <input
         type="text"
         placeholder="Search by description..."
-        value={searchTerm}
+        value={searchTransaction}
         onChange={handleSearch}
       />
       <table>
@@ -34,14 +51,21 @@ const Transactions = () => {
             <th>Description</th>
             <th>Amount</th>
             <th>Category</th>
+            <th>Date</th>
           </tr>
         </thead>
         <tbody>
           {filteredTransactions.map(transaction => (
             <tr key={transaction.id}>
-              <td>{transaction.description}</td>
-              <td>{transaction.amount}</td>
-              <td>{transaction.category}</td>
+            <td>{transaction.description}</td>
+            <td>{transaction.amount}</td>
+            <td>{transaction.category}</td>
+            {/* <td> */}
+              {/* Delete button to delete ttransaction  with transaction.id */}
+              {/* <button onClick={handleDelete}>
+                Delete
+              </button> */}
+            {/* </td> */}
             </tr>
           ))}
         </tbody>

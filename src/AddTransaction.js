@@ -4,6 +4,8 @@ const AddTransaction = () => {
   const [description, setDescription] = useState('');
   const [amount, setAmount] = useState('');
   const [category, setCategory] = useState('');
+  const [date , setDate] = useState('')
+  const [transactions , setTransactions] = useState([])
 
   const handleSubmit = event => {
     event.preventDefault();
@@ -12,12 +14,29 @@ const AddTransaction = () => {
       description,
       amount: (amount),
       category,
+      date,
     };
-    // Here you can add the newTransaction to the transactions list or send it to the server (optional)
+
+
+    // adding new transaction to server
+
+    fetch("http://localhost:3000/transactions", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+  },
+  body: JSON.stringify(newTransaction),
+})
+  .then(response => response.json())
+  .then(data => setTransactions ([...transactions, newTransaction ]))
+  .catch(error => console.error("Error adding transaction:", error));
+
+
     // Reset the form fields
     setDescription('');
     setAmount('');
     setCategory('');
+    setDate('');
   };
 
   return (
@@ -41,6 +60,12 @@ const AddTransaction = () => {
           placeholder="Category"
           value={category}
           onChange={e => setCategory(e.target.value)}
+        />
+        <input
+          type="date"
+          placeholder="Date"
+          value={date}
+          onChange={e => setDate(e.target.value)}
         />
         <button type="submit">Add Transaction</button>
       </form>

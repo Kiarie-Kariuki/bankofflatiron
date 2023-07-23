@@ -6,7 +6,7 @@ function App() {
   return (
       <div className="App">
         <Transactions transactions={Transactions} />
-        <AddTransaction  />
+        <AddTransaction transactions={Transactions}  />
       </div>
   );
 }
