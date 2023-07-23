@@ -4,34 +4,39 @@ const Transactions = () => {
   const [transactions, setTransactions] = useState([]);
   const [searchTransaction, setSearchTransaction] = useState('');
 
+
+  //fetch the data from the server and set it to state
   useEffect(() => {
     fetch('http://localhost:3000/transactions')
       .then(response => response.json())
       .then(data => setTransactions(data))
       .catch(error => console.error('Error fetching data:', error));
-  }, []);
+  }, [transactions]);
 
+  //function to handle search of the transactions by the description
   const handleSearch = event => {
     setSearchTransaction(event.target.value);
   };
 
-  const handleDelete = e => {
-    const transactionIdToDelete = e.target; 
+  //function to delete a transaction from the server
+  const handleDelete = (transactionIdToDelete) => {
 
-fetch(`http://localhost:3000/transactions/${transactionIdToDelete}`, {
-  method: "DELETE",
-})
-  .then(response => {
-    if (response.ok) {
-      console.log("Transaction deleted successfully.");
-    } else {
-      console.error("Failed to delete transaction.");
-    }
-  })
-  .catch(error => console.error("Error deleting transaction:", error));
-
+    fetch(`http://localhost:3000/transactions/${transactionIdToDelete}`, {
+      method: 'DELETE',
+    })
+      .then(response => {
+        if (response.ok) {
+          //update the transactions state by filtering out the deleted transaction
+          setTransactions(prevTransactions =>
+            prevTransactions.filter(transaction => transaction.id !== transactionIdToDelete)
+          );
+        } else {
+          console.error('Failed to delete transaction.');
+        }
+      })
   }
-
+  
+//function to filter through the transactions in regard to the description typed in the search bar
   const filteredTransactions = transactions.filter(transaction =>
     transaction.description.includes(searchTransaction)
   );
@@ -60,12 +65,13 @@ fetch(`http://localhost:3000/transactions/${transactionIdToDelete}`, {
             <td>{transaction.description}</td>
             <td>{transaction.amount}</td>
             <td>{transaction.category}</td>
-            {/* <td> */}
-              {/* Delete button to delete ttransaction  with transaction.id */}
-              {/* <button onClick={handleDelete}>
+            <td>{transaction.date}</td>
+            <td> 
+            {/* Delete button to delete transaction  with transaction.id */}
+               <button onClick ={() => handleDelete(transaction.id)}>
                 Delete
-              </button> */}
-            {/* </td> */}
+              </button> 
+            </td>
             </tr>
           ))}
         </tbody>

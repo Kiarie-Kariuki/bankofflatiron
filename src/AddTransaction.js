@@ -12,13 +12,13 @@ const AddTransaction = () => {
     // Create a new transaction object with the form data
     const newTransaction = {
       description,
-      amount: (amount),
+      amount,
       category,
       date,
     };
 
 
-    // adding new transaction to server
+    // adding new transaction to server and adding it top state
 
     fetch("http://localhost:3000/transactions", {
   method: "POST",
@@ -29,7 +29,7 @@ const AddTransaction = () => {
 })
   .then(response => response.json())
   .then(data => setTransactions ([...transactions, newTransaction ]))
-  .catch(error => console.error("Error adding transaction:", error));
+  .catch(error => console.error("Error adding transaction"));
 
 
     // Reset the form fields
