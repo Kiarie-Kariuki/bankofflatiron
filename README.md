@@ -1,70 +1,106 @@
-# Getting Started with Create React App
+# Bank of Flatiron: Financial Tracker
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+The Financial Tracker React App is a web application that allows users to efficiently track their expenses by adding, viewing, and deleting 
 
-## Available Scripts
+transactions. It provides a user-friendly interface to manage financial transactions and gain insights into spending patterns.
 
-In the project directory, you can run:
+#  Features
 
-### `npm start`
+View all transactions with detailed information, including descriptions, amounts, categories, and dates.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Filter transactions by description using the search bar for quick access to specific records.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Add new transactions with a description, amount, category, and date to maintain an accurate expense log.
 
-### `npm test`
+Delete unwanted transactions from the list to keep the records up-to-date.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+# Technologies Used
 
-### `npm run build`
+The Financial Tracker React App is built using the following technologies:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+React: A popular JavaScript library for building user interfaces efficiently.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+JavaScript: The programming language used for client-side functionality.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+HTML: The markup language for creating the structure of the web app.
 
-### `npm run eject`
+CSS: The stylesheet language for styling the web app and making it visually appealing.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+JSON Server: A lightweight, fake REST API to simulate server-side interactions for transactions.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+# Getting Started
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Follow the instructions below to set up and run the Expense Tracker React App on your local machine.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+# Installation
 
-## Learn More
+# Clone the repository:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+git clone https://github.com/Kiarie-Kariuki/bankofflatiron
 
-### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+# Navigate to the project directory:
 
-### Analyzing the Bundle Size
+cd bankofflatiron
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+# Install dependencies:
 
-### Making a Progressive Web App
+npm install
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+# Running the App
 
-### Advanced Configuration
+Start the development server to run the app:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+npm start
 
-### Deployment
+The app will be accessible at http://localhost:3000 in your web browser.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+# Usage
 
-### `npm run build` fails to minify
+# Viewing Transactions
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Upon accessing the app at http://localhost:3000, you will see a list of all the transactions recorded in the expense tracker. Transactions 
+
+are displayed in a table format with columns for description, amount, category, and date. You can scroll through the list to view all 
+
+transactions.
+
+To quickly find specific transactions, use the search bar located at the top of the transactions list. Enter a keyword related to the 
+
+description, and the app will dynamically filter the transactions based on the input.
+
+# Adding a New Transaction
+
+To add a new transaction to the expense tracker, follow these steps:
+
+Click on the "Add New Transaction" button located at the top of the page.
+
+A form will appear with fields for the transaction description, amount, category, and date.
+
+Enter the relevant details for your new transaction in the respective fields.
+
+Click the "Add Transaction" button at the bottom of the form to save the transaction.
+
+The new transaction will be added to the list, and the total expenses will be updated accordingly.
+
+# Deleting a Transaction
+
+To remove a transaction from the expense tracker, use the "Delete" button associated with each transaction in the list. Follow these steps:
+
+Locate the transaction you want to delete in the transactions table.
+
+Click the "Delete" button next to the transaction you wish to remove.
+
+The transaction will be deleted from the list, and the total expenses will be adjusted accordingly.
+
+# Contributions
+
+Contributions to the Financial Tracker React App are welcome. If you encounter any issues, have suggestions for improvements, or want to add 
+
+new features, please feel free to create a pull request. Before contributing, please review the CONTRIBUTING.md guidelines.
+
+# License
+
+The Financial Tracker React App is open-source and available under the CAK License. You are free to use, modify, and distribute the code as per the terms of the license.
+
